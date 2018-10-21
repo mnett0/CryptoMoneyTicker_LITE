@@ -1,6 +1,6 @@
 # CryptoMoneyTicker_LITE v1.0
 
-![GIF_demo](https://github.com/mnett0/CryptoMoneyTicker_LITE/blob/master/medias/demo.gif)
+![GIF_demo](https://github.com/mnett0/CryptoMoneyTicker_LITE/blob/master/media/demo.gif)
 
 ## Description 
 
@@ -20,7 +20,7 @@ For the moment the left button allows to switch to the previous cryptomoney, the
  * OLED SSH1106 1.3"
  * 3 Push buttons (optional) 
 
-![schema](https://github.com/mnett0/CryptoMoneyTicker_LITE/blob/master/medias/diagram.jpg)
+![schema](https://github.com/mnett0/CryptoMoneyTicker_LITE/blob/master/media/diagram.jpg)
 
 ### Library required
 
@@ -41,7 +41,7 @@ For the moment the left button allows to switch to the previous cryptomoney, the
 Go to [listings](https://api.coinmarketcap.com/v2/listings/) then CTRL+F to launch the search tool, then type the name of the desired currency, take its {id}.
 And finally follow the instructions from line 67
 
-![listings_picture](https://github.com/mnett0/CryptoMoneyTicker_LITE/blob/master/medias/listings.jpg)
+![listings_picture](https://github.com/mnett0/CryptoMoneyTicker_LITE/blob/master/media/listings.jpg)
 
 * Choose the screen change interval *(do not exceed 30 changes/minute)*
 
