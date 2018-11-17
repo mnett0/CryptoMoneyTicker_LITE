@@ -32,8 +32,9 @@
 #include <ArduinoJson.h>
 
 #include <ESP8266WiFi.h>
+#include <DNSServer.h>
 #include <ESP8266WebServer.h>
-#include <AutoConnect.h>
+#include <WifiManager.h>
 #include <WiFiClientSecure.h>
 
 #include <Wire.h>
@@ -77,12 +78,13 @@ String crypto[] = {BITCOIN, ETHEREUM, RIPPLE, LITECOIN, DASH};
 int coin = -1;
 String oldPrice[5];
 
-ESP8266WebServer Server;
-AutoConnect      Portal(Server);
 
 void setup() {
 
   Serial.begin(115200);
+
+  WiFiManager wifiManager;
+  wifiManager.autoConnect("TTGO-CONFIG", "12345678");
 
   u8x8.begin();
   //u8x8.setContrast(10);
@@ -98,13 +100,11 @@ void setup() {
     buttons[i].interval(25);  // interval in ms
   }
 
-  //Server.on("/", rootPage);
-  Portal.begin();
+
 }
 
 void loop() {
 
-  Portal.handleClient();
   buttonCheck();
 
   //unsigned long currentMillis = millis();
