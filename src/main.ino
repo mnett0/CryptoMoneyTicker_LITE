@@ -83,17 +83,17 @@ void setup() {
 
   Serial.begin(115200);
 
-  WiFiManager wifiManager;
-  wifiManager.autoConnect("TTGO-CONFIG", "12345678");
-
   u8x8.begin();
-  //u8x8.setContrast(10);
+  u8x8.setContrast(10);
   u8x8.setFont(u8x8_font_chroma48medium8_r);
 
   u8x8.draw1x2String(3, 2, "CryptoMoney");
   u8x8.drawString(5, 4, "Ticker");
   //u8x8.drawString(5, 4, "v1.0");
   u8x8.drawString(2, 7, "git.io/fxRYm");
+
+  WiFiManager wifiManager;
+  wifiManager.autoConnect("TTGO-CONFIG", "12345678");
 
   for (int i = 0; i < NUM_BUTTONS; i++) {
     buttons[i].attach(BUTTON_PINS[i] , INPUT_PULLUP);  //setup the bounce instance for the current button
