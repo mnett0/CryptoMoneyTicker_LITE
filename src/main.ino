@@ -34,8 +34,9 @@
 #include <ESP8266WiFi.h>
 #include <DNSServer.h>
 #include <ESP8266WebServer.h>
-#include <WifiManager.h>
 #include <WiFiClientSecure.h>
+
+#include <AutoConnect.h>
 
 #include <Wire.h>
 #include <U8x8lib.h>
@@ -50,7 +51,7 @@ U8X8_SH1106_128X64_NONAME_HW_I2C u8x8(U8X8_PIN_NONE, 4, 5);
 #define BUTTON_B 12 
 #define BUTTON_C 13  
 
-const char host[] = "api.coinmarketcap.com";
+const char host[] = "api.coinpaprika.com";
 const int httpsPort = 443;
 
 unsigned long previousMillis = 0;
@@ -67,17 +68,19 @@ bool antiFlickering = LOW;
 
 // https://api.coinmarketcap.com/v2/listings/ for find the {id} of the currency
 // Change the name of the currency and put the {id} in " "
-#define BITCOIN     "1"
-#define ETHEREUM "1027"
-#define RIPPLE     "52"
-#define LITECOIN    "2" 
-#define DASH      "131" 
+#define BTC     "btc-bitcoin"
+#define ETH     "eth-ethereum"
+#define XRP     "xrp-xrp"
+#define USDT    "usdt-tether" 
+#define BCH     "bch-bitcoin-cash" 
 
 // and change again the name here
-String crypto[] = {BITCOIN, ETHEREUM, RIPPLE, LITECOIN, DASH};
+String crypto[] = {BTC, ETH, XRP, USDT, BCH};
 int coin = -1;
 String oldPrice[5];
 
+ESP8266WebServer Server;  
+AutoConnect      Portal(Server);
 
 void setup() {
 
@@ -92,17 +95,21 @@ void setup() {
   //u8x8.drawString(5, 4, "v1.0");
   u8x8.drawString(2, 7, "git.io/fxRYm");
 
-  WiFiManager wifiManager;
-  wifiManager.autoConnect("TTGO-CONFIG", "12345678");
+ //WiFiManager wifiManager;
+ // wifiManager.autoConnect("TTGO-CONFIG", "12345678");
+ 
 
   for (int i = 0; i < NUM_BUTTONS; i++) {
     buttons[i].attach(BUTTON_PINS[i] , INPUT_PULLUP);  //setup the bounce instance for the current button
     buttons[i].interval(25);  // interval in ms
   }
+
+  Portal.begin();
+  Portal.handleClient();
 }
 
 void loop() {
-
+  
   buttonCheck();
 
   //unsigned long currentMillis = millis();
@@ -136,8 +143,8 @@ void loop() {
 
     //Serial.print("Requesting URL: ");
     //Serial.println("Connected to server!");
-    client.println("GET /v2/ticker/" + crypto[coin] + "/ HTTP/1.1");
-    client.println("Host: api.coinmarketcap.com");
+    client.println("GET /v1/ticker/" + crypto[coin] + "/ HTTP/1.1");
+    client.println("Host: api.coinpaprika.com");
     client.println("Connection: close");
     client.println();
 
