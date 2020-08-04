@@ -82,7 +82,7 @@ String oldPrice[5];
 void setup() {
 
   Serial.begin(115200);
-
+  
   u8x8.begin();
   u8x8.setContrast(10);
   u8x8.setFont(u8x8_font_chroma48medium8_r);
@@ -99,8 +99,6 @@ void setup() {
     buttons[i].attach(BUTTON_PINS[i] , INPUT_PULLUP);  //setup the bounce instance for the current button
     buttons[i].interval(25);  // interval in ms
   }
-
-
 }
 
 void loop() {
