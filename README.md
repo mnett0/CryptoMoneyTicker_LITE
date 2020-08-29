@@ -1,6 +1,6 @@
 # CryptoMoneyTicker_LITE v1.0
 
-![GIF_demo](https://github.com/mnett0/CryptoMoneyTicker_LITE/blob/master/media/demo.gif)
+![GIF_demo](https://github.com/mnett0/CryptoMoneyTicker_LITE/blob/master/media/demo2.gif)
 
 ## Description 
 
