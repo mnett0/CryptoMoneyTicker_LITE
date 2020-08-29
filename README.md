@@ -4,15 +4,15 @@
 
 ## Description 
 
-CryptoMoneyTicker_LITE is as its name suggests a lite version of the [CryptoMoneyTicker](https://github.com/mnett0/CryptoMoneyTicker) project.
+CryptoMoneyTicker Lite is as its name suggests a lite version of the [CryptoMoneyTicker](https://github.com/mnett0/CryptoMoneyTicker) project.
 
 It allows you to follow, on a small screen, 5 of your favorite cryptomoney that scroll every minute, by showing the "symbol" of the cryptomoney, its current exchange rate in dollars.
 
-Data are collected via the API of the site [CoinMarketCap](https://coinmarketcap.com) and are updated every 5 minutes.
+Data are collected via the API of the site [coinpaprika](https://coinpaprika.com/).
 
 The arrow to the right indicates whether the previous price of the cryptomoney is falling or rising. 
 
-For the moment the left button allows to switch to the previous cryptomoney, the one in the middle to block it, the one on the right to switch to the next 
+[Experimental] Left button allows to switch to the previous cryptomoney, the one in the middle to block it, the one on the right to switch to the next.
 
 ### Materials
 
@@ -26,7 +26,6 @@ For the moment the left button allows to switch to the previous cryptomoney, the
 
 * [ArduinoJson](https://github.com/bblanchon/ArduinoJson)
 * [ESP8266WiFi](https://github.com/esp8266/Arduino/tree/master/libraries)
-* [ESP8266WebServer](https://github.com/esp8266/Arduino/tree/master/libraries)
 * [AutoConnect](https://github.com/Hieromon/AutoConnect)
 * [WiFiClientSecure](https://github.com/espressif/arduino-esp32/tree/master/libraries/WiFiClientSecure)
 * [U8g2](https://github.com/olikraus/u8g2)
@@ -38,10 +37,10 @@ For the moment the left button allows to switch to the previous cryptomoney, the
 
 * Enter the 5 crypto-currency of your choice:
 
-Go to [listings](https://api.coinmarketcap.com/v2/listings/) then CTRL+F to launch the search tool, then type the name of the desired currency, take its {id}.
+Go to [listings](https://api.coinpaprika.com/v1/coins) then CTRL+F to launch the search tool, then type the name of the desired currency, take its {id}.
 And finally follow the instructions from line 67
 
-![listings_picture](https://github.com/mnett0/CryptoMoneyTicker_LITE/blob/master/media/listings.jpg)
+![listings_picture](https://github.com/mnett0/CryptoMoneyTicker_LITE/blob/master/media/listings2.png)
 
 * Choose the screen change interval *(do not exceed 30 changes/minute)*
 
